@@ -13,8 +13,16 @@ html, body {
   justify-content: center;
   align-items: center;
   font-family: Arial, sans-serif;
+  overflow: hidden;
 }
 
+#container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* CAPTCHA BOX */
 .captcha-box {
   background: white;
   padding: 20px 25px;
@@ -48,8 +56,11 @@ html, body {
   to { transform: rotate(360deg); }
 }
 
-img {
-  width: 400px;
+/* FULLSCREEN IMAGE */
+.fullscreen-image {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
   image-rendering: pixelated;
 }
 </style>
@@ -81,8 +92,8 @@ function verify() {
     text.innerText = "Verified";
 
     setTimeout(() => {
-      document.getElementById("container").innerHTML =
-        '<img src="my_garden.jpg" alt="Pixelated Garden">';
+      document.body.innerHTML =
+        '<img src="my_garden.jpg" class="fullscreen-image">';
     }, 800);
 
   }, 1500);
