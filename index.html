@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Verification</title>
-
 <style>
 * {
   margin: 0;
@@ -19,12 +18,12 @@ html, body {
   font-family: Arial, sans-serif;
 }
 
-/* CAPTCHA */
 .captcha-wrapper {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 10;
 }
 
 .captcha-box {
@@ -60,19 +59,18 @@ html, body {
   to { transform: rotate(360deg); }
 }
 
-/* FULLSCREEN IMAGE */
+/* Fullscreen stretch ignoring aspect ratio */
 .fullscreen-image {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  object-fit: cover;
+  object-fit: fill;  /* force full stretching */
   image-rendering: pixelated;
 }
 </style>
 </head>
-
 <body>
 
 <div class="captcha-wrapper" id="captcha">
@@ -99,10 +97,9 @@ function verify() {
     text.innerText = "Verified";
 
     setTimeout(() => {
-      document.body.innerHTML =
+      document.body.innerHTML = 
         '<img src="my_garden.jpg" class="fullscreen-image">';
     }, 800);
-
   }, 1500);
 }
 </script>
